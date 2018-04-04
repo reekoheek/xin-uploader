@@ -1,6 +1,8 @@
 // Karma configuration
 // Generated on Wed Apr 04 2018 09:55:19 GMT+0700 (WIB)
 
+const path = require('path');
+
 module.exports = function (config) {
   config.set({
 
@@ -71,6 +73,14 @@ module.exports = function (config) {
       mode: 'development',
       module: {
         rules: [
+          {
+            test: /\.js$/,
+            use: {
+              loader: 'istanbul-instrumenter-loader',
+              options: { esModules: true },
+            },
+            exclude: /node_modules|\.test\.js$/,
+          },
           {
             test: /\.css$/,
             use: [ 'style-loader', 'css-loader' ],

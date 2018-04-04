@@ -21,4 +21,13 @@ describe('xin-uploader', () => {
     let uploader = fixture.$$('xin-uploader');
     assert.equal(uploader.querySelectorAll('.uploader-file').length, 2);
   });
+
+  it('delete', async () => {
+    let fixture = Fixture.create(`<xin-uploader multiple value='[{"serverName":"foo"}]'></xin-uploader>`);
+    await fixture.waitConnected(300);
+    let uploader = fixture.$$('xin-uploader');
+    uploader.querySelector('.uploader-file .uploader-file__close').click();
+    await fixture.waitConnected(300);
+    assert.equal(uploader.querySelectorAll('.uploader-file').length, 0);
+  });
 });
