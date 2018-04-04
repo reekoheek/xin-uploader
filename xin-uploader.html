@@ -1,0 +1,18 @@
+<button id="uploaderDropzone" (click)="$.uploaderFile.click()">+</button>
+<input type="file" id="uploaderFile" accept="[[accept]]" (change)="fileSelected(evt)" multiple$="[[multiple]]">
+
+<div class="uploader-files">
+  <xin-for id="uploaderFor" items="[[value]]" as="file">
+    <template>
+      <div class="uploader-file" class.uploader-file--uploading="[[file.isUploading]]">
+        <span class="uploader-file__servername">[[file.serverName]]</span>
+        <span class="uploader-file__name">[[file.name]]</span>
+        <span class="uploader-file__type">[[file.type]]</span>
+
+        <button class="uploader-file__close" (click)="deleteClicked(evt)">x</button>
+        <progress></progress>
+      </div>
+    </template>
+  </xin-for>
+</div>
+
